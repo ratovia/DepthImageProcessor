@@ -26,6 +26,9 @@ class DepthImageProcessor(Node):
                 if x % 100 == 0 and y % 100 == 0:
                     self.logger.info(f"y:{y} x:{x} {np_data[y, x]} mm")
 
+        # インタラクティブモードを有効化
+        plt.ion()
+
         # 2次元データをプロット
         plt.imshow(np_data, cmap='hot', interpolation='nearest')
         plt.colorbar(label='Distance (mm)')
@@ -33,6 +36,9 @@ class DepthImageProcessor(Node):
         plt.ylabel('Y Pixel')
         plt.title('Depth Image Distance Data')
         plt.show()
+
+        # ショートディレイを挿入してUIの更新を許可
+        plt.pause(0.001)
 
 
 def main(args=None):
