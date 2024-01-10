@@ -30,7 +30,7 @@ class DepthImageProcessor(Node):
         # グラフの初期化
         if not self.initialized_graph:
             plt.ion()
-            self.im = plt.imshow(np_data, cmap='hot', interpolation='nearest', vmin=0, vmax=2000)
+            self.im = plt.imshow(np_data, cmap='hot', interpolation='nearest', vmin=0, vmax=1000)
             plt.colorbar(label='Distance (mm)')
             plt.xlabel('X Pixel')
             plt.ylabel('Y Pixel')
@@ -39,7 +39,7 @@ class DepthImageProcessor(Node):
         else:
             # データのみを更新
             self.im.set_data(np_data)
-            self.im.set_clim(vmin=0, vmax=2000)  # データ範囲の更新
+            self.im.set_clim(vmin=0, vmax=1000)  # データ範囲の更新
             plt.draw()
 
         plt.pause(0.001)
