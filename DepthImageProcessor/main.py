@@ -26,18 +26,20 @@ class DepthImageProcessor(Node):
                 if x % 100 == 0 and y % 100 == 0:
                     self.logger.info(f"y:{y} x:{x} {np_data[y, x]} mm")
 
-        # インタラクティブモードを有効化
-        plt.ion()
+        # グラフの初期化
+        if not self.initialized_graph:
+            plt.ion()
+            self.im = plt.imshow(np_data, cmap='hot', interpolation='nearest')
+            plt.colorbar(label='Distance (mm)')
+            plt.xlabel('X Pixel')
+            plt.ylabel('Y Pixel')
+            plt.title('Depth Image Distance Data')
+            self.initialized_graph = True
+        else:
+            # データのみを更新
+            self.im.set_data(np_data)
+            plt.draw()
 
-        # 2次元データをプロット
-        plt.imshow(np_data, cmap='hot', interpolation='nearest')
-        plt.colorbar(label='Distance (mm)')
-        plt.xlabel('X Pixel')
-        plt.ylabel('Y Pixel')
-        plt.title('Depth Image Distance Data')
-        plt.show()
-
-        # ショートディレイを挿入してUIの更新を許可
         plt.pause(0.001)
 
 
