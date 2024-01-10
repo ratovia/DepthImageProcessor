@@ -47,7 +47,7 @@ class DepthImageProcessor(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    camera_name = 'camera_1'
+    camera_name = 'camera'
     depth_image_processor = DepthImageProcessor(camera_name)
     rclpy.spin(depth_image_processor)
     depth_image_processor.destroy_node()
