@@ -26,7 +26,6 @@ class DepthImageProcessor(Node):
                     continue
 
                 distance = np_data[y, x]
-                print(f"y:{y} x:{x} {distance} mm")
                 self.logger.info(f"y:{y} x:{x} {distance} mm")
 
 def main(args=None):
