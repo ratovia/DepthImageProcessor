@@ -1,0 +1,17 @@
+.env
+
+# build
+log/
+install/
+build/
+
+*.buildinfo
+*.changes
+*.deb
+*.ddeb
+debhelper-build-stamp
+files
+*.egg-info/
+dist-packages/
+usr/
+DEBIAN/
