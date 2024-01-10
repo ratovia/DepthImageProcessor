@@ -13,6 +13,7 @@ class DepthImageProcessor(Node):
             10
         )
         self.logger = self.get_logger()
+        self.initialized_graph = False
 
     def distance_from_depth_callback(self, depth_msg):
         raw_data = depth_msg.data
